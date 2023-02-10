@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.runtimeerrors.frangeradmin" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Franger control</name>
+    <description>Floodranger device admin app</description>
+    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#37BC9B" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="*" />
+    <allow-intent href="https://*/*" />
+
+    <!-- Allow all unrecognized URLs to open installed apps
+     *NOT RECOMMENDED* -->
+    <allow-intent href="*" />
+    <access origin="*" />
+</widget>

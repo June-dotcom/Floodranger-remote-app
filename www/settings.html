@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+        https://cordova.apache.org/docs/en/latest/
+    Some notes:
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link href="fonts/css/all.min.css" rel="stylesheet" type="text/css" />
+
+    <title>Floodranger android port</title>
+
+    <style>
+        *{
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
+        }
+    </style>
+    
+</head>
+<body class="theme-light bg-light" data-highlight="highlight-mint" data-gradient="body-default">
+    <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+    <div id="page" >
+        <div class="header header-fixed header-logo-center border-0 bg-highlight">
+            <span class="header-title color-white font-17">Settings</span>
+        </div>
+        <div id="footer-bar" class="footer-bar-1  ">
+            <a href="settings.html" class="active-nav"><i class="fa-solid fa-sliders"></i><span>Settings</span></a>
+            <a href="home.html"><i class="fa-solid fa-house-blank opacity-70"></i><span>Dashboard</span><strong></strong></a>
+            <a href="info.html"><i class="fa-solid fa-list-ul opacity-70"></i><span>More info</span></a>
+        </div>
+        <div class="page-content header-clear bg-light">
+            
+            
+            <div class="card card-style mt-1 mx-0 rounded-0 pt-3 shadow-0" > 
+                <a href="settings_wifi.html">
+                    <div class="d-flex px-3 mb-3">
+                        <div class="align-self-center">
+                            <span class="icon icon-m rounded-m bg-fade-blue-light shadow-0 shadow-bg-s text-center color-white me-3"><i class="fa-solid color-blue-dark fa-wifi font-20"></i></span>
+                        </div>
+                        <div class="align-self-center me-auto">
+                            <h4 class="font-16 mb-n1">WiFi connectivity settings</h4>
+                            <p class="mb-0 mt-n2"><span class="color-theme opacity-30 font-13 font-400">Modify wifi ssid and password</span></p>
+                        </div>
+                    </div>
+                </a>
+                <a href="settings_calibration.html">
+                    <div class="d-flex px-3 mb-3">
+                        <div class="align-self-center">
+                            <span class="icon icon-m rounded-m bg-fade-pink-light shadow-0 shadow-bg-s text-center color-white me-3"><i class="fa-solid color-pink-dark fa-meter-droplet font-20"></i></span>
+                        </div>
+                        <div class="align-self-center me-auto">
+                            <h4 class="font-16 mb-n1">Sensor calibration settings</h4>
+                            <p class="mb-0 mt-n2"><span class="color-theme opacity-30 font-13 font-400">Set device sensor preferences</span></p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="scan_devices.html">
+                    <div class="d-flex px-3 mb-3">
+                        <div class="align-self-center">
+                            <span class="icon icon-m rounded-m bg-fade-mint-light shadow-0 shadow-bg-s text-center color-white me-3"><i class="fa-solid color-mint-dark  fa-microchip font-20"></i></span>
+                        </div>
+                        <div class="align-self-center me-auto">
+                            <h4 class="font-16 mb-n1">Device menu</h4>
+                            <p class="mb-0 mt-n2"><span class="color-theme opacity-30 font-13 font-400">Change or monitor other available device/s</span></p>
+                        </div>
+                    </div>
+                </a>
+                
+                    <div class="d-flex px-3 mb-3">
+                        <div class="align-self-center">
+                            <span class="icon icon-m rounded-m bg-fade-yellow-light shadow-0 shadow-bg-s text-center color-white me-3"><i class="fa-solid color-yellow-dark fa-cloud-upload font-20"></i></span>
+                        </div>
+                        <div class="align-self-center mes-auto">
+                            <h4 class="font-16 mb-n1">Sensor sync</h4>
+                            <p class="mb-0 mt-n2"><span class="color-theme opacity-30 font-13 font-400">Current status <span id="settings_sync_status">...</span> </span></p>
+                        </div>
+                        
+                        <div class="ms-auto me-3 pe-2 align-self-center">
+                            <button id="btn_sensor_sync_on" class="btn bg-mint-dark rounded-xl">Start</button>
+                            <button id="btn_sensor_sync_off" class="btn bg-orange-dark rounded-xl">Stop</button>
+
+                        </div>
+                    </div>
+                
+                
+            </div>
+        </div>          
+        <script src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/jquery-3.6.3.min.js"></script>
+        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/sweetalert211.js"></script>
+
+        <script type="text/javascript" src="js/controllers/global_env.js"></script>
+        <script type="text/javascript" src="js/controllers/main_settingsController.js"></script>
+
+    </body>
+    

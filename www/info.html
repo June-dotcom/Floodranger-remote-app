@@ -1,0 +1,198 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+        https://cordova.apache.org/docs/en/latest/
+    Some notes:
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link href="fonts/css/all.min.css" rel="stylesheet" type="text/css" />
+
+    <title>Floodranger android port</title>
+
+    <style>
+        *{
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
+        }
+    </style>
+         
+
+    <!-- set variables for more info.html dashboard -->
+</head>
+<body class="theme-light bg-light" data-highlight="highlight-mint" data-gradient="body-default">
+    <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+
+    <div id="page" >
+        <div class="header header-fixed header-logo-center border-0 bg-highlight">
+            <span class="header-title color-white font-17">More info</span>
+        </div>
+        <div id="footer-bar" class="footer-bar-1  ">
+            <a href="settings.html" ><i class="fa-solid fa-sliders opacity-70"></i><span>Settings</span></a>
+            <a href="home.html"><i class="fa-solid fa-house-blank opacity-70"></i><span>Dashboard</span><strong></strong></a>
+            <a href="info.html" class="active-nav"><i class="fa-solid fa-list-ul "></i><span>More info</span></a>
+        </div>
+        <div class="page-content header-clear bg-light">
+            
+            
+            <div class="card card-style mt-1 mx-0 rounded-0 pt-3 shadow-0" > 
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Device name</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_device_name" >Loading...</span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+                
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Device api key</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_device_api_key">Loading...</span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+                
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Sensor ID</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_sensor_id">Loading...</span></p>
+                    </div>
+                </div>
+               
+                <div class="divider mb-2 mt-n2"></div>
+                
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Water level(cm)</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_water_level">Loading...</span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+                
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Distance to sensor(cm) </p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_dist_sensor">Loading...</span></p>
+                    </div>
+                </div>
+            
+                <div class="divider mb-2 mt-n2"></div>
+
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Cloud connectivity status</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_cloud_conn">Loading...</span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Sensor sync status</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_sensor_sync">Loading...</span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">WiFi SSID</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_wifi_ssid">Loading...</span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+                
+                <div class="d-flex px-3 mb-3">
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">WiFi password</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_wifi_pass">Loading...</span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">WiFi signal strength(dBm)</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_wifi_signal">Loading...</span></p>
+                    </div>
+                </div>
+                
+                <div class="divider mb-2 mt-n2"></div>
+                <div class="d-flex px-3 mb-3">
+                    
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">WiFi signal status</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_wifi_remarks">Loading...</span></p>
+                    </div>
+                </div>
+                
+              
+                <div class="divider mb-2 mt-n2"></div>
+                <div class="d-flex px-3 mb-3">
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Flood alert level 1</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_fld_lvl_a">...</span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+                <div class="d-flex px-3 mb-3">
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Flood alert level 2</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_fld_lvl_b"></span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+                <div class="d-flex px-3 mb-3">
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Flood alert level 3</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_fld_lvl_c"></span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+                <div class="d-flex px-3 mb-3">
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Flood alert status</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_fld_status">Loading...</span></p>
+                    </div>
+                </div>
+                <div class="divider mb-2 mt-n2"></div>
+                <div class="d-flex px-3 mb-3">
+                    <div class="align-self-center me-auto">
+                        <p class="font-15 mb-n1 opacity-50">Is water overflowed?</p>
+                        <p class="mb-0 mt-n2"><span class="color-theme opacity-90 font-16 font-400" id="inf_is_overflowed">Loading...</span></p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <script src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/jquery-3.6.3.min.js"></script>
+        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/controllers/global_env.js"></script>
+        <script type="text/javascript" src="js/controllers/infoController.js"></script>
+        <!-- <script type="text/javascript" src="js/test_info.js"></script> -->
+
+    </body>
+    

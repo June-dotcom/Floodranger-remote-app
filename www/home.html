@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+        https://cordova.apache.org/docs/en/latest/
+    Some notes:
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link href="fonts/css/all.min.css" rel="stylesheet" type="text/css" />
+
+    <title>Floodranger android port</title>
+
+    <style>
+        *{
+            -webkit-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
+        }
+    </style>
+    
+</head>
+<body class="theme-light bg-light">
+    <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+
+    <div id="page">
+        <div class="header header-fixed header-logo-center border-0 bg-highlight">
+            <span class="header-title color-white font-17">Dashboard</span>   
+        </div>
+        <div id="footer-bar" class="footer-bar-1 ">
+            <a href="settings.html"><i class="fa-solid fa-sliders opacity-70"></i><span>Settings</span></a>
+            <a href="home.html" class="active-nav"><i class="fa-solid fa-house-blank"></i><span>Dashboard</span><strong></strong></a>
+            <a href="info.html"><i class="fa-solid fa-list-ul opacity-70"></i><span>More info</span></a>
+        </div>
+        
+        <div class="page-content header-clear">
+            <div class="row mb-0">
+                <div class="col-12 ">
+                    <div class="card card-style mx-0 shadow-0 rounded-0" data-card-height="100" style="height: 100px;">
+                        <div class="card-top p-3">
+                            <span class="icon icon-xxs bg-fade-mint-light rounded-sm float-end">
+                                <i class="font-12 fa-duotone fa-server color-mint-dark"></i>
+                            </span>
+                        </div>
+                        <div class="card-bottom p-3"> 
+                            <span class="font-15 opacity-60" id="home_conn_status"></span>
+                            <h1 class="mb-n1 font-28" id="home_device_name">Loading..</h1>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content mt-0">
+                <div class="row mb-n3">
+                    <div class="col-6 pe-2">
+                        <div class="card card-style mx-0 mb-3 shadow-0" data-card-height="130" style="height: 130px;">
+                            <div class="card-top p-3">
+                                <span class="icon icon-xxs bg-fade-blue-light rounded-sm float-end">
+                                    <i class="font-12 fa-solid fa-droplet color-blue-dark"></i>
+                                </span>
+                            </div>
+                            <div class="card-bottom p-3"> 
+                                <span class="font-15 opacity-60">Water level</span>
+                                <h1 class="mb-n1 font-28" id="home_water_level_cm">..</h1>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 ps-2">
+                        <div class="card card-style mx-0 mb-3 shadow-0" data-card-height="130" style="height: 130px;">
+                            <div class="card-top p-3">
+                                <span class="icon icon-xxs bg-fade-yellow-light rounded-sm float-end">
+                                    <i class="font-12 fa-solid fa-ruler color-yellow-dark"></i>
+                                </span>
+                            </div>
+                            <div class="card-bottom p-3">        
+                                <span class="font-15 opacity-60">Distance to water</span>
+                                <h1 class="mb-n1 font-28" id="home_dist_to_water_cm">..</h1>
+                                
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+            
+            
+            <div class="card card-style mt-1 pt-3 shadow-0"> 
+                <a href="#">
+                    <div class="d-flex px-3 mb-3">
+                        <div class="align-self-center">
+                            <span class="icon icon-m rounded-m bg-fade-blue-light shadow-0 shadow-bg-s text-center color-white me-3"><i class="fa-solid color-blue-dark fa-wifi font-20"></i></span>
+                        </div>
+                        <div class="align-self-center me-auto">
+                            <p class="mb-0 mt-n2"><span class="color-theme opacity-30 font-11 font-400" >WiFi connectivity</span></p>
+                            <h4 class="font-14 mb-n1" id="home_wifi_conn_val">Loading...</h4>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="d-flex px-3 mb-3">
+                        <div class="align-self-center">
+                            <span class="icon icon-m rounded-m bg-fade-pink-light shadow-0  text-center color-white me-3"><i class="fa fa-cloud color-pink-dark font-20"></i></span>
+                        </div>
+                        <div class="align-self-center me-auto">
+                            <p class="mb-0 mt-n2"><span class="color-theme opacity-30 font-11 font-400" >Cloud sync</span></p>
+                            <h4 class="font-14 mb-n1" id="home_cloud_sync_val">Loading...</h4>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#">
+                    <div class="d-flex px-3 mb-3">
+                        <div class="align-self-center">
+                            <span class="icon icon-m rounded-m bg-fade-mint-light shadow-0 shadow-bg-s text-center color-white me-3"><i class="fa-solid color-mint-dark fa-cloud-upload font-20"></i></span>
+                        </div>
+                        <div class="align-self-center mes-auto">
+                            <p class="mb-0 mt-n2"><span class="color-theme opacity-30 font-11 font-400" >Sensor sync</span></p>
+                            <h4 class="font-14 mb-n1" id="home_sensor_sync_val">Loading...</h4>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="">
+                    <div class="d-flex px-3 mb-3">
+                        <div class="align-self-center">
+                            <span class="icon icon-m rounded-m bg-fade-yellow-light shadow-0 text-center color-white me-3"><i class="fa fa-exclamation-triangle color-yellow-dark font-20"></i></span>
+                        </div>
+                        <div class="align-self-center mes-auto">
+                            <p class="mb-n1 mt-n2"><span class="color-theme opacity-30 font-11 font-400" >Flood alert level</span></p>
+                            <h4 class="font-14 mb-n1" id="home_floodlalertlvl_val">Loading...</h4>
+                        </div>
+                    </div>
+                </a>        
+            </div>   
+        </div>
+        
+        <script src="cordova.js"></script>
+        <script src="js/controllers/global_env.js"></script>
+        <script type="text/javascript" src="scripts/jquery-3.6.3.min.js"></script>
+        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/controllers/homeController.js"></script>
+
+    </body>
+    
