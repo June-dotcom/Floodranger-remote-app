@@ -27,6 +27,33 @@ function onDeviceReady() {
     // console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     // document.getElementById('deviceready').classList.add('ready');
     // main page
-    
-    window.location.href = "home.html";
+    document.addEventListener("backbutton", onBackKeyDown, false);
+    initVars().then(initTask).catch(console.error);
+
+}
+
+function initVars() {
+    return new Promise((resolve) => {
+        // Some code
+        initialize_host();
+        console.log("First function executed");
+        resolve();
+    });
+}
+
+function initTask() {
+    //  checkIfNewlyInstalled();
+
+     if(host != null) {
+        window.location.href = "home.html";
+    }else{
+        $("#preloader").hide();
+
+    }
+}
+
+function checkIfNewlyInstalled() {
+
+   
+
 }

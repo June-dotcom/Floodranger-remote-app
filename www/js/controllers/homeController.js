@@ -5,11 +5,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
   document.addEventListener("backbutton", onBackKeyDown, false);
 
-
-
-  initVars()
-    .then(initTask)
-    .catch(console.error);
+  initVars().then(initTask).catch(console.error);
     $("#preloader").hide();
 
 }

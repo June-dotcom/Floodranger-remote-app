@@ -1,7 +1,6 @@
 // import { get_host } from './global_env.js';
 var base_ip_to_scan;
 var fetch_man_route = "/show_device_logs_json_global";
-var device_list;
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
@@ -10,9 +9,7 @@ function onDeviceReady() {
   
   networkinterface.getWiFiIPAddress(onSuccess, onError);
   // networkinterface.getCarrierIPAddress( onSuccess, onError );
-  
   // alert('device scanner');
-  // setInterval(display_list_of_devices, 5000);
 }
 
 function onSuccess( ipInformation ) {
@@ -27,12 +24,11 @@ function onSuccess( ipInformation ) {
   const startIp = 1;
   const endIp = 255;
   
-  
   for (let i = startIp; i <= endIp; i++) {
     const ip_scanning = "http://" + firstThreeOctets + "." + i + fetch_man_route;
     const ip_base_scan = firstThreeOctets + "." + i; 
     
-    cordova.plugin.http.setRequestTimeout(1.5);
+    cordova.plugin.http.setRequestTimeout(2.5);
     var tmp_txt = "";
     const options = {
       method: 'get',
@@ -63,7 +59,7 @@ function onSuccess( ipInformation ) {
 function onError( error ) {
   // Note: onError() will be called when an IP address can't be
   // found, e.g. WiFi is disabled, no SIM card, Airplane mode
-  alert( error );
+  Swal.fire( error );
 }
 
 
@@ -87,13 +83,7 @@ function add_to_list_of_devices(device_obj_tmp){
   
   $("#device_list").append(device_instance);
   // $("ul").append(" <li class='list-group-item'>" + device_obj_tmp.device_name +  " " +  device_obj_tmp.device_name +  "</li>");
-  device_list.push(device_obj_tmp);
   
 }
 
 
-function display_list_of_devices(){
-  //exampleFormControlTextarea1
-  const stringifiedArray = JSON.stringify(device_list);
-  alert(stringifiedArray);
-}
